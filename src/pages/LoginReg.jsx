@@ -144,19 +144,22 @@ const dispatch =useDispatch();
         toast.success("Login")
         setLoader(true)
         setTimeout(()=>{
-        navigate('/home')
+        navigate("/")
         },2000)
       })
      }
    }
   
+
+
+
    const handleGoogleLoginPop = ()=>{
     signInWithPopup(auth, provider)
     .then((user)=>{
       setTimeout(()=>{
         dispatch(userLoginInfo(user))
         localStorage.setItem('userLoginInfo',JSON.stringify((user)))
-        navigate('/home')
+        navigate('/')
       },3000)
     }).catch((error)=>{
       console.log(error.code);
@@ -184,6 +187,9 @@ const dispatch =useDispatch();
     setEye(true)
   }
 
+
+
+  
   return (
     <>
       {/* For Desktop */}

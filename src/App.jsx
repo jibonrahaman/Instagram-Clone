@@ -8,30 +8,37 @@ import {
   RouterProvider
 } from "react-router-dom";
 import LoginReg from './pages/LoginReg';
-import HomePage from './pages/Home/HomePage';
-import Photos from './pages/PhotosPart/Photos';
-import HomeHome from './Components/HomeHome/HomeHome';
-
+import SideBar from './pages/SideBar/SideBar';
+import HomePage from './pages/Home/HomePage'
+import RootLeyaout from './pages/RootLeyaOut/RootLeyaout';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
    <>
     <Route
-      path="/"
+      path="/login-signup"
       element={<LoginReg />}>  
       </Route>
+
     <Route
-      path="/profile"
-      element={<HomePage />}>  
+      path="/"
+      element={<RootLeyaout />}>  
+      <Route  
+      path="/"
+      element={<HomePage/>} 
+      >
+      </Route>
       </Route> 
-      <Route
+
+
+      {/* <Route
       path="/home"
       element={<HomeHome />}>  
       </Route>
        <Route
       path="/photos"
       element={<Photos />}>  
-      </Route>
+      </Route> */}
     {/* <Route
       path="/forgetpassword"
       element={<ForgetPassword />}>  
