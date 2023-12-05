@@ -9,6 +9,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { useDispatch, useSelector } from 'react-redux';
 import { RotatingLines } from 'react-loader-spinner';
 import { userLoginInfo } from '../../Components/Slices/UserSlice';
+import UserList from '../Users/UserList';
 function RootLeyaout() {
     const navigate =useNavigate()
   const data =useSelector(state => state.userLoginInfo.userInfo)
@@ -38,7 +39,7 @@ function RootLeyaout() {
   }, [])
     return (
 
-       <section  >
+       <section   >
 
       {
         loader ?
@@ -54,9 +55,10 @@ function RootLeyaout() {
 
           :
           verifyemail && data ?
-            (  <Flex>
+            (  <Flex className=" justify-between" >
                 <SideBar />
                 <Outlet/>
+                <UserList/>
                     </Flex>    )
 
             :
