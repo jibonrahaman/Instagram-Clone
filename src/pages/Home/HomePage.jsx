@@ -16,17 +16,21 @@ import { CgStories } from "react-icons/cg";
 import user from '../../assets/user.jpg'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
+import PrevArrow from '../../Components/PrevArrow';
+import NextArrow from '../../Components/NextArrow';
 function HomePage() {
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    nextArrow :<NextArrow/>,
+    prevArrow:<PrevArrow/>,
   };
   return (
-    <section className='w-[60%] px-32'>
-      <div className=' bg-[#242526] px-3 py-5' >
+    <section className='w-[60%] mt-6  px-32'>
+      <div className=' bg-[#242526] rounded-lg px-3 py-5' >
         <Flex className=" text-3xl items-center text-center gap-x-1">
           <CgStories className="mt-1 text-[#0866ff]" />
           <h2 className=" text-[#0866ff] font-bold">Stories</h2>
