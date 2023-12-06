@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RotatingLines } from 'react-loader-spinner';
 import { userLoginInfo } from '../../Components/Slices/UserSlice';
 import UserList from '../Users/UserList';
+import HomePage from '../Home/HomePage';
 function RootLeyaout() {
     const navigate =useNavigate()
   const data =useSelector(state => state.userLoginInfo.userInfo)
@@ -56,9 +57,8 @@ function RootLeyaout() {
           :
           verifyemail && data ?
             (  <Flex className=" justify-between" >
-                <SideBar />
-                <Outlet/>
-                <UserList/>
+                <SideBar className=" fixed w-[20%]" />
+                     <HomePage/>
                     </Flex>    )
 
             :

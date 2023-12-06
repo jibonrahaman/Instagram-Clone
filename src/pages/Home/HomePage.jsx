@@ -18,6 +18,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import PrevArrow from '../../Components/PrevArrow';
 import NextArrow from '../../Components/NextArrow';
+import UserList from '../Users/UserList';
 function HomePage() {
   const settings = {
     dots: false,
@@ -29,7 +30,8 @@ function HomePage() {
     prevArrow:<PrevArrow/>,
   };
   return (
-    <section className='w-[60%] mt-6  px-32'>
+  <section className='w-[80%] flex justify-between'>
+      <div className=' w-[80%] mt-6  px-32'>
       <div className=' bg-[#242526] rounded-lg px-3 py-5' >
         <Flex className=" text-3xl items-center text-center gap-x-1">
           <CgStories className="mt-1 text-[#0866ff]" />
@@ -85,10 +87,9 @@ function HomePage() {
 
 
       </div>
-
-       
-
-    </section>
+      </div>
+      <UserList className=""/>
+  </section>
   )
 }
 
