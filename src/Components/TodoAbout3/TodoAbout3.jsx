@@ -98,10 +98,10 @@ function TodoAbout3() {
 
     return (
         <section className=' '>
-            <div className=' h-screen text-white  px-16 pt-4 ' >
-                <Flex className=" items-center  gap-x-10 ">
-                    <Flex className=" gap-x-5 items-center">
-                        <h2 className='text-white text-2xl'>posts Photo/Status</h2>
+            <div className=' h-screen text-white   pt-4 ' >
+                <Flex className=" items-center ">
+                    <Flex className=" items-center">
+                        <h2 className='text-white text-2xl'>Create Post</h2>
                         <FallingLines
                             color="#4fa94d"
                             width="100"
@@ -117,7 +117,7 @@ function TodoAbout3() {
                         <div className='border mt-2 border-[#37383a]'></div>
                     </div>
                 </Flex>
-                <Post />
+                {/* <Post /> */}
 
                 {/* backdrop */}
                 {

@@ -19,6 +19,7 @@ import "slick-carousel/slick/slick.css";
 import PrevArrow from '../../Components/PrevArrow';
 import NextArrow from '../../Components/NextArrow';
 import UserList from '../Users/UserList';
+import TodoAbout3 from '../../Components/TodoAbout3/TodoAbout3';
 function HomePage() {
   const settings = {
     dots: false,
@@ -31,7 +32,7 @@ function HomePage() {
   };
   return (
   <section className='w-[80%] flex justify-between'>
-      <div className=' w-[80%] mt-6  px-32'>
+      <div className=' w-[80%]   px-32 bg-black'>
       <div className=' bg-[#242526] rounded-lg px-3 py-5' >
         <Flex className=" text-3xl items-center text-center gap-x-1">
           <CgStories className="mt-1 text-[#0866ff]" />
@@ -40,7 +41,7 @@ function HomePage() {
         <p className='mt-1 relative w-48 h-1  bg-[#0866ff] '></p>
 
    
-        <div className=' ' >
+        <div className=' mt-5' >
        
        <Slider {...settings}>
          <div>
@@ -86,6 +87,10 @@ function HomePage() {
 
 
 
+      </div>
+
+      <div>
+      <TodoAbout3/>
       </div>
       </div>
       <UserList className=""/>
