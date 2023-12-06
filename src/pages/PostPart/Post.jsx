@@ -1,6 +1,8 @@
 import React from 'react'
 import Flex from '../../Components/Flex'
 import user from '../../assets/user.jpg'
+import { CiEdit } from "react-icons/ci";
+import { MdDelete } from "react-icons/md";
 function Post() {
   return (
     <section className=' post rounded-lg py-4 bg-[#242526]'>
@@ -11,6 +13,10 @@ function Post() {
              <p className=' text-xl'>Md Shahriar Fardous</p>
             <span className=' text-[#82858a] text-[12px]'>Time 2 pm </span>
             </div>
+            <Flex className="">
+            <CiEdit />
+            <MdDelete />
+            </Flex>
         </Flex>
      </div>
     </section>
