@@ -5,7 +5,6 @@ import { MdOutlineClose } from "react-icons/md";
 import '../../Components/TodoAbout3/TodoAbout3.css'
 import { FaLeaf, FaUpload } from "react-icons/fa";
 import { Dna, FallingLines } from 'react-loader-spinner'
-import Post from '../../pages/PostPart/Post';
 import { ImUpload } from 'react-icons/im'
 import { getAuth, updateProfile } from 'firebase/auth';
 import { useSelector } from 'react-redux';
@@ -117,7 +116,7 @@ function TodoAbout3() {
                         <div className='border mt-2 border-[#37383a]'></div>
                     </div>
                 </Flex>
-                {/* <Post /> */}
+             
 
                 {/* backdrop */}
                 {
