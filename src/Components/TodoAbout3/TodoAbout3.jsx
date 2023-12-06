@@ -97,7 +97,7 @@ function TodoAbout3() {
 
     return (
         <section className=' '>
-            <div className=' h-screen text-white   pt-4 ' >
+            <div className=' text-white   pt-4 ' >
                 <Flex className=" items-center ">
                     <Flex className=" items-center">
                         <h2 className='text-white text-2xl'>Create Post</h2>

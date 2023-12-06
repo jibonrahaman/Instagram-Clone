@@ -13,6 +13,7 @@ import { userLoginInfo } from '../Slices/UserSlice'
 import SideBar from '../../pages/SideBar/SideBar'
 import TodoAbout from '../../pages/TodoAbout/TodoAbout'
 import TodoAbout3 from '../TodoAbout3/TodoAbout3'
+import Post from '../../pages/PostPart/Post'
 function HomeHome() {
   const navigate = useNavigate();
   const data = useSelector(state => state.userLoginInfo.userInfo)
@@ -63,6 +64,7 @@ function HomeHome() {
                   <div class="border-r-[1px] border-[#212121]"></div>
                   <div className='bg-[#000000] w-[83%] '>
                     <TodoAbout3 />
+                  
                   </div>
                 </div>
               </div>     )

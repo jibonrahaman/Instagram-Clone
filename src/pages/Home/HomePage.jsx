@@ -20,6 +20,7 @@ import PrevArrow from '../../Components/PrevArrow';
 import NextArrow from '../../Components/NextArrow';
 import UserList from '../Users/UserList';
 import TodoAbout3 from '../../Components/TodoAbout3/TodoAbout3';
+import Post from '../PostPart/Post';
 function HomePage() {
   const settings = {
     dots: false,
@@ -31,7 +32,7 @@ function HomePage() {
     prevArrow:<PrevArrow/>,
   };
   return (
-  <section className='w-[80%] flex justify-between'>
+  <section className='w-[80%]  overflow-y-scroll flex justify-between'>
       <div className=' w-[80%]   px-32 bg-black'>
       <div className=' bg-[#242526] rounded-lg px-3 py-5' >
         <Flex className=" text-3xl items-center text-center gap-x-1">
@@ -89,8 +90,9 @@ function HomePage() {
 
       </div>
 
-      <div>
+      <div className=' '>
       <TodoAbout3/>
+      <Post />
       </div>
       </div>
       <UserList className=""/>
