@@ -41,10 +41,8 @@ function HomePage() {
         </Flex>
         <p className='mt-1 relative w-48 h-1  bg-[#0866ff] '></p>
 
-   
         <div className=' mt-5' >
-       
-       <Slider {...settings}>
+         <Slider {...settings}>
          <div>
          <img src={user} alt={user} className=' w-[150px] object-cover h-[200px] ' />
        </div>
@@ -85,9 +83,6 @@ function HomePage() {
       
        </Slider>
      </div>
-
-
-
       </div>
 
       <div className=' '>

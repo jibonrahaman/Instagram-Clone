@@ -13,6 +13,7 @@ import RootLeyaout from    './pages/RootLeyaOut/RootLeyaout'
 import HomePage from './pages/Home/HomePage';
 import LoginReg from './../src/pages/LoginReg'
 import Verifyemail from './Components/Verifyemail';
+import TodoAbout from './pages/TodoAbout/TodoAbout';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,9 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },{
+        path: "/profile",
+        element: <TodoAbout />,
       },
     ],
   },

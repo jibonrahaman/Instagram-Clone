@@ -75,10 +75,12 @@ function SideBar({className}) {
       <div>
           <div className='flex flex-col gap-y-5 pt-12 text-xl   '>
     
-       <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
+     <Link to="/">
+     <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
            <SlHome />
             <p>Home</p>
            </div>
+     </Link>
        
  
             <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
@@ -107,9 +109,11 @@ function SideBar({className}) {
            </div>
  
       
-          <div className='flex gap-x-4 items-center ml-4 '>
+        <Link to='/profile'>
+        <div className='flex gap-x-4 items-center ml-4 '>
                <p>Profile</p>
            </div> 
+        </Link>
           
         <Flex className="justify-end bg-[#52522f] rounded-lg duration-500 px-4 py-3 hover:bg-[#1a1a1a]">
         <CiLogout onClick={handleLogOut} className='text-3xl  text-white ' />
