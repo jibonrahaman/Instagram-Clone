@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Flex from '../../Components/Flex'
 import user from '../../assets/user.jpg'
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import Product4 from '../../assets/Product4.png'
 import fb from '../../assets/fb.jpg'
+import { getDatabase, ref, onValue } from "firebase/database";
 function Post() {
+  const db = getDatabase();
+const postRef = ref(db, 'posts/');
+onValue(postRef, (snapshot) => {
+  snapshot.forEach((item)=>{
+    console.log(item.val());
+  })
+});
   return (
     <section className=' post rounded-lg py-4 mt-4 bg-[#242526]'>
      <div className='group text-white'>
