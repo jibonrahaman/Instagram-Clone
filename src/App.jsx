@@ -12,6 +12,7 @@ import * as ReactDOM from "react-dom/client";
 import RootLeyaout from    './pages/RootLeyaOut/RootLeyaout'
 import HomePage from './pages/Home/HomePage';
 import LoginReg from './../src/pages/LoginReg'
+import Verifyemail from './Components/Verifyemail';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <HomePage />,
       },
     ],
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
   {
     path:"/login-signup",
     element:<LoginReg/>
-  }
+  }, 
+  {
+    path:"/emailverify",
+    element:<Verifyemail/>
+  },
 ]);
 
 const App = () => {
