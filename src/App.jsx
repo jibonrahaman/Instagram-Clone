@@ -33,10 +33,7 @@ const router = createBrowserRouter([
     path:"/login-signup",
     element:<LoginReg/>
   }, 
-  {
-    path:"/emailverify",
-    element:<Verifyemail/>
-  },
+ 
 ]);
 
 const App = () => {

@@ -21,7 +21,7 @@ function RootLeyaout() {
 
       <Flex className=" justify-between" >
         <SideBar className=" fixed w-[20%]" />
-        <HomePage />
+       <Outlet/>
       </Flex>
 
 

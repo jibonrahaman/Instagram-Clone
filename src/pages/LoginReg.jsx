@@ -12,8 +12,6 @@ import { userLoginInfo } from '../Components/Slices/UserSlice';
 
 const LoginReg = () => {
   const data =useSelector(state => state.userLoginInfo.userInfo)
-  console.log(data);
-
 
   const provider = new GoogleAuthProvider();
   const db = getDatabase();
@@ -71,12 +69,14 @@ const dispatch =useDispatch();
           setfullname('')
           setpassword1('')
           sendEmailVerification(auth.currentUser)
-          setTimeout(() => {
-            setActive(false)
-          }, 1500)
+          .then(()=>{
+            // setTimeout(() => {
+           
+              setActive(false)
+            // }, 1500)
+          })
           
-        }).then(()=>{
-          
+        }).then(()=>{          
           set(ref(db, 'users/' + user.user.uid), {
             username: user.user.displayName,
             email: user.user.email,
@@ -97,10 +97,12 @@ const dispatch =useDispatch();
   const handleGoogleSignUpPop = ()=>{
     signInWithPopup(auth, provider)
     .then((user)=>{
+      
       setTimeout(()=>{
         dispatch(userLoginInfo(user))
         localStorage.setItem('userLoginInfo',JSON.stringify((user)))
         navigate('/home')
+    
       },3000)
     }).catch((error)=>{
       console.log(error.code);
@@ -138,15 +140,18 @@ const dispatch =useDispatch();
     }
   
      if(email2 && password2 &&  (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email2))){
-      signInWithEmailAndPassword(auth , email2 , password2).then((user)=>{
-        dispatch(userLoginInfo(user))
-        localStorage.setItem('userLoginInfo', JSON.stringify((user)))
-        toast.success("Login")
-        setLoader(true)
-        setTimeout(()=>{
-        navigate("/")
-        },2000)
-      })
+      signInWithEmailAndPassword(auth , email2 , password2).then((userCredential)=>{
+        const user = userCredential.user;
+        console.log(user);
+        if(user.emailVerified){
+          navigate('/')
+          toast.success("Login")
+         
+        }else{
+          toast.error("please verify email")
+        }
+     
+             })
      }
    }
   

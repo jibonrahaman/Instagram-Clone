@@ -23,15 +23,6 @@ function SideBar({className}) {
     const dispatch=useDispatch();
      const [verifyemail, setveryfyemail] =useState(false)
   const [loader, setloader] =useState(false);
-  onAuthStateChanged(auth, (user) => {
-    console.log(user.emailVerified);
-    if (user.emailVerified == false) {
-     navigate('/emailverify')
-    }
-    dispatch(userLoginInfo(user))
-    localStorage.setItem('userLoginInfo' , JSON.stringify(user))
-    setloader(false)
-  });
 
   
   useEffect(() => {
