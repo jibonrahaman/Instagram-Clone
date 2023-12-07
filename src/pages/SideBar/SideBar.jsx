@@ -21,10 +21,9 @@ function SideBar({className}) {
     const auth = getAuth();
     const navigate =useNavigate();
     const dispatch=useDispatch();
-     const [verifyemail, setveryfyemail] =useState(false)
+   const [verifyemail, setveryfyemail] =useState(false)
   const [loader, setloader] =useState(false);
   onAuthStateChanged(auth, (user) => {
-    console.log(user.emailVerified);
     if (user.emailVerified == false) {
      navigate('/emailverify')
     }
@@ -56,91 +55,16 @@ function SideBar({className}) {
     });
   }
   return (
-    <section  >
+  
 
        
               
     
          
           <section className={`${className}`}>
-    
-  <section   >
-
-
-    {/* // (    <div className="flex justify-center items-center h-screen"> */}
-        {/* <RotatingLines */}
-    {/* // strokeColor="black"
-    // strokeWidth="5"
-    // animationDuration="0.75"
-    // width="120"
-    // height="120" 
-    // visible={true}  />
-    //   </div>     */}
-
-
-    <div className=' pl-7  w-full  h-screen pt-8  bg-red-500 text-white '>
-      <h2>InstAbout</h2>
-      <div>
-          <div className='flex flex-col gap-y-5 pt-12 text-xl   '>
-    
-       <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
-           <SlHome />
-            <p>Home</p>
-           </div>
-       
- 
-            <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
-            <TbVirusSearch />
-            <p>Search</p>
-           </div>
- 
-            <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
-            <MdExplore />
-            <p>Explore</p>
-           </div>
- 
-           <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
-           <BiSolidMessage />
-            <p>Message</p>
-           </div>
- 
-            <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
-            <FcDoNotInhale className='text-[#ffa726]' />
-            <p>Notificaiton</p>
-           </div> 
- 
-           <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
-         <VscGitPullRequestCreate  className='text-[#ffff00]'/>
-            <p>Create</p>
-           </div>
- 
-      
-          <div className='flex gap-x-4 items-center ml-4 '>
-               <p>Profile</p>
-           </div> 
-          
-        <Flex className="justify-end bg-[#52522f] rounded-lg duration-500 px-4 py-3 hover:bg-[#1a1a1a]">
-        <CiLogout onClick={handleLogOut} className='text-3xl  text-white ' />
-        </Flex>
-      
-          </div>
-      </div>
-   </div>   
-
-  
-    
-
-</section>
- </section>   
-                            
-    
-    
-    
-    
-    
-    
-    
-    
+            {
+              loader
+            }       
         </section>
   
   )

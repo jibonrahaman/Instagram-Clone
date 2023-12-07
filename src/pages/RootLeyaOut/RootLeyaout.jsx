@@ -13,20 +13,20 @@ import UserList from '../Users/UserList';
 import HomePage from '../Home/HomePage';
 function RootLeyaout() {
 
-  const data =useSelector(state => state.userLoginInfo.userInfo)
- 
-    return (
+  const data = useSelector(state => state.userLoginInfo.userInfo)
 
-       <section   >
+  return (
 
-<Flex className=" justify-between" >
-                <SideBar className=" fixed w-[20%]" />
-                     <HomePage/>
-</Flex>
-            
+    <section   >
 
-         
-     
+      <Flex className=" justify-between" >
+        <SideBar className=" fixed w-[20%]" />
+        <HomePage />
+      </Flex>
+
+
+
+
     </section>
   )
 }
