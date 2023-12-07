@@ -40,7 +40,7 @@ function HomePage() {
           <h2 className=" text-[#0866ff] font-bold">Stories</h2>
         </Flex>
         <p className='mt-1 relative w-48 h-1  bg-[#0866ff] '></p>
-
+ 
    
         <div className=' mt-5' >
        

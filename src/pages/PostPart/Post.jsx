@@ -6,14 +6,20 @@ import { MdDelete } from "react-icons/md";
 import Product4 from '../../assets/Product4.png'
 import fb from '../../assets/fb.jpg'
 import { getDatabase, ref, onValue } from "firebase/database";
+import { useState } from 'react';
 function Post() {
+  const [postShow, setpostShow] =useState([]);
   const db = getDatabase();
-const postRef = ref(db, 'posts/');
-onValue(postRef, (snapshot) => {
-  snapshot.forEach((item)=>{
-    console.log(item.val());
-  })
-});
+useEffect(()=>{
+  const postRef = ref(db, 'posts/');
+  onValue(postRef, (snapshot) => {
+    let arr =[]
+    snapshot.forEach((item)=>{
+     arr.push(item.val());
+    })
+    setpostShow(arr)
+  });
+}, [])
   return (
     <section className=' post rounded-lg py-4 mt-4 bg-[#242526]'>
      <div className='group text-white'>

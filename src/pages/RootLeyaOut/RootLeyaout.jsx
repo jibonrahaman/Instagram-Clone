@@ -14,19 +14,19 @@ import HomePage from '../Home/HomePage';
 function RootLeyaout() {
     const navigate =useNavigate()
   const data =useSelector(state => state.userLoginInfo.userInfo)
-  const [verifyemail, setveryfyemail] =useState(false)
-  const [loader, setloader] =useState(true)
+  const [verifyemail, setveryfyemail] =useState(true)
+  const [loader, setloader] =useState(false)
   const auth =getAuth();
  const dispatch=useDispatch();
-  onAuthStateChanged(auth, (user) => {
-    console.log(user.emailVerified);
-    if (user.emailVerified = true) {
-      setveryfyemail(true)
-    }
-    dispatch(userLoginInfo(user))
-    localStorage.setItem('userLoginInfo' , JSON.stringify(user))
-    setloader(false)
-  });
+  // onAuthStateChanged(auth, (user) => {
+  //   console.log(user.emailVerified);
+  //   if (user.emailVerified = true) {
+  //     setveryfyemail(true)
+  //   }
+  //   dispatch(userLoginInfo(user))
+  //   localStorage.setItem('userLoginInfo' , JSON.stringify(user))
+  //   setloader(false)
+  // });
 
   const handleBack = () => {
     if (verifyemail == false) {
@@ -58,7 +58,7 @@ function RootLeyaout() {
           verifyemail && data ?
             (  <Flex className=" justify-between" >
                 <SideBar className=" fixed w-[20%]" />
-                     <HomePage/>
+                    <Outlet/>
                     </Flex>    )
 
             :
