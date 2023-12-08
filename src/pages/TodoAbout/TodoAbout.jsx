@@ -63,14 +63,14 @@ function TodoAbout() {
         });
       });
     }
-  };c
+  };
 
   const handleShowUpload =()=>{
    setProfileImageUpload(true)
   }
   return (
     <section className='w-[80%] '>
-        <div  className='  h-screen text-white   ' >
+        <div  className='  h-screen pt-8 text-white   ' >
         <Flex className="  items-center gap-x-20">
                 <div onClick={handleShowUpload} className=' relative group'>
                     <img src={data.photoURL} alt={data.photoURL} className=' w[200px] h-[200px] rounded-full' />
