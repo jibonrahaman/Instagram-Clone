@@ -12,6 +12,7 @@ function Post() {
   const [postShow, setpostShow] =useState([]);
   const db = getDatabase();
   const data=useSelector(state =>state.userLoginInfo.userInfo)
+  console.log(data);
   const [userList,setuserList]=useState([]);
   useEffect(() => {
     const userRef = ref(db, 'users/');
@@ -36,15 +37,15 @@ useEffect(()=>{
   });
 }, [])
   return (
-    <section className=' post rounded-lg py-4 mt-4 bg-[#242526]'>
-     <div className='group text-white'>
-     {
-      userList.map((item,index)=>{
-        <div key={index}>
+  <section className=''>
+    {
+  postShow.map((item,index)=>(
+   <section key={index}>
+ <div className=' post rounded-lg pt-4 group    text-white mt-4 bg-[#242526]'>
     <Flex className=' relative  gap-x-3 items-center px-3'>
-            <img src={item.userImgUrl} alt={item.userImgUrl} className=' w-12 h-12 rounded-full' />
+            <img src={item.postsendPhoto} alt={item.postsendPhoto} className=' w-12 h-12 rounded-full' />
             <div className='' >
-             <p className=' text-xl'>{item.userName}</p>
+             <p className=' text-xl'>{item.postsendname}</p>
             <span className=' text-[#82858a] text-[12px]'>Time 2 pm </span>
             </div>
             <Flex className="  gap-x-9 absolute right-4 text-3xl  ">
@@ -52,24 +53,15 @@ useEffect(()=>{
             <MdDelete  className='group-hover:bg-black rounded-full w-12 h-12 p-2 duration-500'/>
             </Flex>
         </Flex>
-        </div>
-      })
-     }
-       {
-        postShow.map((item,index)=>(
-          <div key={index}>
-        <div >
-       <p className=' mx-4 my-3'>Ens with an idea..😊🧠
-#mernstack #cl thing  begins with an idea..😊🧠
-#mernstack #classtimeEvery thing  begins with an idea..😊🧠
-#mernstack #classtime</p>
-    <img src={Product4} alt={Product4} className='w-full object-cover'/>
-        </div>
-          </div>
-        ))
-       }
-     </div>
-    </section>
+          <div >
+   <p className=' mx-4 my-3'>{item.text}</p>
+     <img src={item.img} alt={item.img} className='w-full  object-cover'/>
+    </div>       
+</div>
+   </section>
+  ))
+}
+  </section>
   )
 }
 
