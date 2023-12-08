@@ -63,7 +63,7 @@ function TodoAbout() {
         });
       });
     }
-  };
+  };c
 
   const handleShowUpload =()=>{
    setProfileImageUpload(true)
