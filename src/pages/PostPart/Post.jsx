@@ -7,9 +7,24 @@ import Product4 from '../../assets/Product4.png'
 import fb from '../../assets/fb.jpg'
 import { getDatabase, ref, onValue } from "firebase/database";
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 function Post() {
   const [postShow, setpostShow] =useState([]);
   const db = getDatabase();
+  const data=useSelector(state =>state.userLoginInfo.userInfo)
+  const [userList,setuserList]=useState([]);
+  useEffect(() => {
+    const userRef = ref(db, 'users/');
+    onValue(userRef, (snapshot) => {
+      let arr = []
+      snapshot.forEach(item => {
+        if (data.uid != item.key) {
+          arr.push({ ...item.val(), userid: item.key });
+        }
+      })
+      setuserList(arr)
+    });
+  }, [])
 useEffect(()=>{
   const postRef = ref(db, 'posts/');
   onValue(postRef, (snapshot) => {
@@ -23,10 +38,13 @@ useEffect(()=>{
   return (
     <section className=' post rounded-lg py-4 mt-4 bg-[#242526]'>
      <div className='group text-white'>
-        <Flex className=' relative  gap-x-3 items-center px-3'>
-            <img src={user} alt={user} className=' w-12 h-12 rounded-full' />
+     {
+      userList.map((item,index)=>{
+        <div key={index}>
+    <Flex className=' relative  gap-x-3 items-center px-3'>
+            <img src={item.userImgUrl} alt={item.userImgUrl} className=' w-12 h-12 rounded-full' />
             <div className='' >
-             <p className=' text-xl'>Md Shahriar Fardous</p>
+             <p className=' text-xl'>{item.userName}</p>
             <span className=' text-[#82858a] text-[12px]'>Time 2 pm </span>
             </div>
             <Flex className="  gap-x-9 absolute right-4 text-3xl  ">
@@ -34,7 +52,12 @@ useEffect(()=>{
             <MdDelete  className='group-hover:bg-black rounded-full w-12 h-12 p-2 duration-500'/>
             </Flex>
         </Flex>
-
+        </div>
+      })
+     }
+       {
+        postShow.map((item,index)=>(
+          <div key={index}>
         <div >
        <p className=' mx-4 my-3'>Ens with an idea..😊🧠
 #mernstack #cl thing  begins with an idea..😊🧠
@@ -42,6 +65,9 @@ useEffect(()=>{
 #mernstack #classtime</p>
     <img src={Product4} alt={Product4} className='w-full object-cover'/>
         </div>
+          </div>
+        ))
+       }
      </div>
     </section>
   )

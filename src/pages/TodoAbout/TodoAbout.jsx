@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import "cropperjs/dist/cropper.css";
 import { getDownloadURL, getStorage, ref, uploadString } from "firebase/storage";
 import { Cropper } from 'react-cropper';
-import { set } from 'firebase/database';
+import { set ,ref as dref,getDatabase} from 'firebase/database';
 import { userLoginInfo } from '../../Components/Slices/UserSlice';
 
 function TodoAbout() {
@@ -21,6 +21,7 @@ function TodoAbout() {
   const [postImg,setpostImg]=useState(true)
   const [ProfileImageUpload ,setProfileImageUpload] =useState(false)
   const storage = getStorage();
+  const db=getDatabase();
   const auth = getAuth();
   const data=useSelector(state => state.userLoginInfo.userInfo)
   console.log(data.photoURL);
@@ -56,6 +57,10 @@ function TodoAbout() {
           updateProfile(auth.currentUser, {
             photoURL: downloadURL,
           }).then(()=>{
+            set(dref(db, 'users/'+data.uid),{
+              userName: data.displayName,
+              userImgUrl : downloadURL
+            })
             dispatch(userLoginInfo({...data, photoURL: downloadURL}))
         localStorage.setItem('userLoginInfo',JSON.stringify(({...data, photoURL: downloadURL})))
             setProfileImageUpload(false)
