@@ -54,7 +54,7 @@ function TodoAbout() {
           updateProfile(auth.currentUser, {
             photoURL: downloadURL,
           }).then(()=>{
-            dispatch(userLoginInfo(user))
+            dispatch(userLoginInfo({...data, photoURL: downloadURL}))
         localStorage.setItem('userLoginInfo',JSON.stringify((user)))
             setProfileImageUpload(false)
           })
