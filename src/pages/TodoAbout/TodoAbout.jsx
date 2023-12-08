@@ -8,13 +8,14 @@ import { MdOutlineClose } from "react-icons/md";
 import Post from '../PostPart/Post';
 import { ImUpload } from 'react-icons/im'
 import { getAuth, updateProfile } from 'firebase/auth';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import "cropperjs/dist/cropper.css";
 import { getDownloadURL, getStorage, ref, uploadString } from "firebase/storage";
 import { Cropper } from 'react-cropper';
 import { set } from 'firebase/database';
 
 function TodoAbout() {
+  const dispatch=useDispatch();
   const [backdropShow,setbackdropShow] = useState(false)
   const [postImg,setpostImg]=useState(true)
   const [ProfileImageUpload ,setProfileImageUpload] =useState(false)
