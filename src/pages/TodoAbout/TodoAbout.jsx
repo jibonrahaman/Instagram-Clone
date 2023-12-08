@@ -55,7 +55,7 @@ function TodoAbout() {
             photoURL: downloadURL,
           }).then(()=>{
             dispatch(userLoginInfo({...data, photoURL: downloadURL}))
-        localStorage.setItem('userLoginInfo',JSON.stringify((user)))
+        localStorage.setItem('userLoginInfo',JSON.stringify(({...data, photoURL: downloadURL})))
             setProfileImageUpload(false)
           })
         });
