@@ -61,7 +61,7 @@ function SideBar({className}) {
        
 
 
-    <div className=' pl-7  w-full  h-screen pt-8  bg-red-500 text-white '>
+    <div className=' pl-7  w-full  h-screen pt-8  text-white '>
       <h2>InstAbout</h2>
       <div>
           <div className='flex flex-col gap-y-5 pt-12 text-xl   '>

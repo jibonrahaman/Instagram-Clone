@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import "cropperjs/dist/cropper.css";
 import { getDownloadURL, getStorage, ref, uploadString } from "firebase/storage";
 import { Cropper } from 'react-cropper';
+import { set } from 'firebase/database';
 
 function TodoAbout() {
   const [backdropShow,setbackdropShow] = useState(false)
@@ -41,10 +42,10 @@ function TodoAbout() {
     reader.readAsDataURL(files[0]);
   }
 
+  const storageRef = ref(storage, data.uid);
   const getCropData = () => {
     if (typeof cropperRef.current?.cropper !== "undefined") {
       setCropData(cropperRef.current?.cropper.getCroppedCanvas().toDataURL());
-      const storageRef = ref(storage, auth.currentUser.uid);
       const message4 = cropperRef.current?.cropper.getCroppedCanvas().toDataURL();
       uploadString(storageRef, message4, 'data_url').then((snapshot) => {
         console.log('Uploaded a data_url string!');
@@ -53,6 +54,8 @@ function TodoAbout() {
           updateProfile(auth.currentUser, {
             photoURL: downloadURL,
           }).then(()=>{
+            dispatch(userLoginInfo(user))
+        localStorage.setItem('userLoginInfo',JSON.stringify((user)))
             setProfileImageUpload(false)
           })
         });
@@ -64,9 +67,9 @@ function TodoAbout() {
    setProfileImageUpload(true)
   }
   return (
-    <section className=' '>
-        <div  className=' h-screen text-white  px-44 pt-4 ' >
-               <Flex className="  items-center gap-x-20">
+    <section className='w-[80%] '>
+        <div  className='  h-screen text-white   ' >
+        <Flex className="  items-center gap-x-20">
                 <div onClick={handleShowUpload} className=' relative group'>
                     <img src={data.photoURL} alt={data.photoURL} className=' w[200px] h-[200px] rounded-full' />
                     <Flex className='w-full   h-full group-hover:bg-[rgb(0,0,0,0.41)] opacity-0 group-hover:opacity-100 duration-500 absolute top-0 left-0 rounded-full justify-center  items-center text-center cursor-pointer  '>
@@ -135,6 +138,7 @@ function TodoAbout() {
               <button onClick={()=>setProfileImageUpload(false)}  type='button' className=' bg-red-700 text-white px-6 py-2 rounded-lg hover:bg-black hover:text-red-900 '>Cancel </button>
 
             </Flex>
+
 
           </div>
         </div>  

@@ -59,24 +59,20 @@ const dispatch =useDispatch();
       }
     }
     if (email1 && password1 && fullname && (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email1))) {
-      createUserWithEmailAndPassword(auth, email1, password1).then((user) => {
-        updateProfile(auth.currentUser, {
-          displayName: fullname,
-           photoURL: "/src/assets/user.jpg"
-        }).then(() => {
+      createUserWithEmailAndPassword(auth, email1, password1).then((user) => {        
           toast.success("registration done please verify your email")
           setemail1('')
           setfullname('')
           setpassword1('')
           sendEmailVerification(auth.currentUser)
           .then(()=>{
-            // setTimeout(() => {
-           
-              setActive(false)
-            // }, 1500)
-          })
-          
-        }).then(()=>{          
+         setActive(false)
+         updateProfile(auth.currentUser, {
+          displayName: fullname,
+           photoURL: "/src/assets/user.jpg"
+        })
+       })
+       .then(()=>{          
           set(ref(db, 'users/' + user.user.uid), {
             username: user.user.displayName,
             email: user.user.email,
@@ -101,7 +97,7 @@ const dispatch =useDispatch();
       setTimeout(()=>{
         dispatch(userLoginInfo(user))
         localStorage.setItem('userLoginInfo',JSON.stringify((user)))
-        navigate('/home')
+        navigate('/')
     
       },3000)
     }).catch((error)=>{
@@ -142,11 +138,11 @@ const dispatch =useDispatch();
      if(email2 && password2 &&  (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email2))){
       signInWithEmailAndPassword(auth , email2 , password2).then((userCredential)=>{
         const user = userCredential.user;
-        console.log(user);
         if(user.emailVerified){
           navigate('/')
           toast.success("Login")
-         
+         dispatch(userLoginInfo(user))
+        localStorage.setItem('userLoginInfo',JSON.stringify((user)))
         }else{
           toast.error("please verify email")
         }
