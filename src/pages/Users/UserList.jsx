@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Flex from '../../Components/Flex'
+import { getDatabase, onValue, ref } from 'firebase/database';
+import { useSelector } from 'react-redux';
 
 function UserList() {
+  const data =useSelector(state => state.userLoginInfo.userInfo)
+  const db =getDatabase();
+  useEffect(() => {
+    const userRef = ref(db, 'users/');
+    onValue(userRef, (snapshot) => {
+      let arr = []
+      snapshot.forEach(item => {
+        if (data.uid != item.key) {
+          arr.push({ ...item.val(), userid: item.key });
+        }
+      })
+      setuserList(arr)
+    });
+  }, [])
   return (
    <section className='  w-[20%] '>
     <Flex className="  ">

@@ -15,18 +15,7 @@ function Post() {
   const data=useSelector(state =>state.userLoginInfo.userInfo)
   console.log(data);
   const [userList,setuserList]=useState([]);
-  useEffect(() => {
-    const userRef = ref(db, 'users/');
-    onValue(userRef, (snapshot) => {
-      let arr = []
-      snapshot.forEach(item => {
-        if (data.uid != item.key) {
-          arr.push({ ...item.val(), userid: item.key });
-        }
-      })
-      setuserList(arr)
-    });
-  }, [])
+ 
 useEffect(()=>{
   const postRef = ref(db, 'posts/');
   onValue(postRef, (snapshot) => {
