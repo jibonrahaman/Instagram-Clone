@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Flex from '../../Components/Flex'
 import { getDatabase, onValue, ref } from 'firebase/database';
 import { useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 function UserList() {
   const data =useSelector(state => state.userLoginInfo.userInfo)
   const db =getDatabase();
+  const [userList , setuserList] =useState([]);
   useEffect(() => {
     const userRef = ref(db, 'users/');
     onValue(userRef, (snapshot) => {
