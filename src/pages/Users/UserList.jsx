@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Flex from '../../Components/Flex'
 import { getDatabase, onValue, ref } from 'firebase/database';
 import { useSelector } from 'react-redux';
-
+import user from '../../assets/user.jpg'
 function UserList() {
   const data =useSelector(state => state.userLoginInfo.userInfo)
   const db =getDatabase();
@@ -20,10 +20,19 @@ function UserList() {
     });
   }, [])
   return (
-   <section className='  w-[20%] '>
-    <Flex className="  ">
-    <h2>name</h2>
-    </Flex>
+   <section className=' text-white '>
+
+     <div className=' fixed px-4'>
+     {
+      data &&
+      <Flex className=" items-center">
+     <img src={data.photoURL} alt={data.photoURL} className='w-10 h-10 rounded-full' />
+     <p className=' text-xl '>{data.displayName}</p>
+     </Flex>
+     }
+     </div>
+ 
+ 
    </section>
   )
 }

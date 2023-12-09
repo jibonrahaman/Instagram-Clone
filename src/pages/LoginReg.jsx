@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { FaGooglePlusG, FaFacebookF, FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import { toast } from 'react-toastify';
 import { Bars } from 'react-loader-spinner'
@@ -167,7 +167,12 @@ const dispatch =useDispatch();
     })
   }
 
-
+  useEffect(()=>{
+    if(data !=null){
+       navigate("/")
+    }
+ 
+   },[])
 
 
   const [active, setActive] = useState(false)

@@ -24,17 +24,11 @@ function SideBar({className}) {
      const [verifyemail, setveryfyemail] =useState(false)
   const [loader, setloader] =useState(false);
 
-  
-  useEffect(() => {
-    if (!data) {
-      navigate('/login-signup')
-    }
-  }, [])
-  
-   
-  
- 
-
+  useEffect(()=>{
+    if(data == null){
+       navigate("/login-signup")
+    } 
+   },[])
   const handleLogOut = () =>{
     signOut(auth).then(() => {
       navigate('/login-signup')

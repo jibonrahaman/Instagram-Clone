@@ -20,7 +20,7 @@ function RootLeyaout() {
     <section   >
 
       <Flex className=" justify-between  bg-[#18191a]" >
-        <SideBar className=" fixed w-[20%]" />
+        <SideBar className=" fixed " />
        <Outlet/>
       </Flex>
 

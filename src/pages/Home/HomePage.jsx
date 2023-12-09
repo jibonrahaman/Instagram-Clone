@@ -10,7 +10,7 @@
 
 // export default HomePage
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import Flex from '../../Components/Flex'
 import { CgStories } from "react-icons/cg";
 import user from '../../assets/user.jpg'
@@ -21,7 +21,9 @@ import NextArrow from '../../Components/NextArrow';
 import UserList from '../Users/UserList';
 import TodoAbout3 from '../../Components/TodoAbout3/TodoAbout3';
 import Post from '../PostPart/Post';
+import { useSelector } from 'react-redux';
 function HomePage() {
+  const data=useSelector(state => state.userLoginInfo.userInfo)
   const settings = {
     dots: false,
     infinite: false,
@@ -31,9 +33,10 @@ function HomePage() {
     nextArrow :<NextArrow/>,
     prevArrow:<PrevArrow/>,
   };
+ 
   return (
-  <section className='w-[80%]  overflow-y-scroll flex justify-between'>
-      <div className=' w-[80%]   px-32 bg-black'>
+  <section className='w-[80%]  overflow-y-scroll flex '>
+      <div className=' w-[70%]   px-20 bg-black'>
       <div className=' bg-[#242526] rounded-lg px-3 py-5' >
         <Flex className=" text-3xl items-center text-center gap-x-1">
           <CgStories className="mt-1 text-[#0866ff]" />

@@ -110,10 +110,13 @@ function TodoAbout3() {
                         />
                     </Flex>
                     <div className=' w-[520px] rounded-md px-4 py-4 bg-[#242526] '>
+                       {
+                        data && 
                         <Flex className=" gap-x-2">
-                            <img src={data.photoURL} alt={data.photoURL} className='w-[50px] h-[50px] rounded-full' />
-                            <input onClick={() => setbackdropShow(!backdropShow)} type="text" placeholder="What's your mind?" className='w-[400px] rounded-2xl px-3 hover:bg-[#4e4f50] bg-[#3a3b3c] focus:outline-none' />
-                        </Flex>
+                        <img src={data.photoURL} alt={data.photoURL} className='w-[50px] h-[50px] rounded-full' />
+                        <input onClick={() => setbackdropShow(!backdropShow)} type="text" placeholder="What's your mind?" className='w-[400px] rounded-2xl px-3 hover:bg-[#4e4f50] bg-[#3a3b3c] focus:outline-none' />
+                    </Flex>
+                       }
                         <div className='border mt-2 border-[#37383a]'></div>
                     </div>
                 </Flex>

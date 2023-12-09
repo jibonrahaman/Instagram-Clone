@@ -23,7 +23,7 @@ function TodoAbout() {
   const storage = getStorage();
   const db=getDatabase();
   const auth = getAuth();
-  const data=useSelector(state => state.userLoginInfo.userInfo)
+  const data=useSelector(state =>state.userLoginInfo.userInfo)
   console.log(data.photoURL);
   const [image, setImage] = useState('');
   const [cropData, setCropData] = useState('');
@@ -62,7 +62,7 @@ function TodoAbout() {
               userImgUrl : downloadURL
             })
             dispatch(userLoginInfo({...data, photoURL: downloadURL}))
-        localStorage.setItem('userLoginInfo',JSON.stringify(({...data, photoURL: downloadURL})))
+            localStorage.setItem('userLoginInfo',JSON.stringify(({...data, photoURL: downloadURL})))
             setProfileImageUpload(false)
           })
         });
