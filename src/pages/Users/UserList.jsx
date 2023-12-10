@@ -36,12 +36,13 @@ function UserList() {
       {
         userList.map((item,index)=>(
          <div key={index}>
-          <Flex className="mt-6 gap-x-1 text-center items-center ">
+          <Flex className="mt-6 gap-x-1 text-center items-center">
+     <Flex>
      <img src={item.userImgUrl} alt={item.userImgUrl} className='w-12 h-12 rounded-full' />
-     <Flex className="items-center justify-between  ">
-     <p className=' text-xl mt-[2px] '>{item.userName}</p>
-     <button className='text-[#004b7b] hover:text-white duration-300 text-[18px] mt-1 '>follow</button>
+         <p className=' text-xl mt-[2px] '>{item.userName}</p>
      </Flex>
+     <button className='text-[#004b7b] hover:text-white duration-300 text-[18px] mt-1 '>follow</button>
+  
      </Flex>
          </div>
         ))
