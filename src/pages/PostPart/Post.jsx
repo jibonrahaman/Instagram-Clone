@@ -29,32 +29,32 @@ useEffect(()=>{
   });
 }, [])
   return (
-  <section className=''>
+  <section className='h-screen'>
     {
   postShow.map((item,index)=>(
-   <section key={index}>
- <div className=' post rounded-lg pt-4 group  my-8  text-white mt-4 bg-[#242526]'>
-    <Flex className=' relative  gap-x-3 items-center px-3'>
-            <img src={item.postsendPhoto} alt={item.postsendPhoto} className=' w-12 h-12 rounded-full' />
-            <div className='' >
-             <p className=' text-xl'>{item.postsendname}</p>
-            <span className=' text-[#82858a] text-[12px]'>
-              {
-                  moment(item.date, "YYYYMMDD hh:mm:ss a").fromNow()
-              } 
-              </span>
-            </div>
-            <Flex className="  gap-x-9 absolute right-4 text-3xl  ">
-            <CiEdit className='group-hover:bg-black rounded-full w-12 h-12 p-2 duration-500' />
-            <MdDelete  className='group-hover:bg-black rounded-full w-12 h-12 p-2 duration-500'/>
-            </Flex>
-        </Flex>
-          <div >
-   <p className=' mx-4 my-3'>{item.text}</p>
-     <img src={item.img} alt={item.img} className='w-full  object-cover'/>
-    </div>       
-</div>
-   </section>
+    <section key={index}>
+    <div className=' post rounded-lg  pt-4 group  my-8  text-white mt-4 bg-[#242526]'>
+       <Flex className=' relative  gap-x-3 items-center px-3'>
+               <img src={item.postsendPhoto} alt={item.postsendPhoto} className=' w-12 h-12 rounded-full' />
+               <div className='' >
+                <p className=' text-xl'>{item.postsendname}</p>
+               <span className=' text-[#82858a] text-[12px]'>
+                 {
+                     moment(item.date, "YYYYMMDD hh:mm:ss a").fromNow()
+                 } 
+                 </span>
+               </div>
+               <Flex className="  gap-x-9 absolute right-4 text-3xl  ">
+               <CiEdit className='group-hover:bg-black rounded-full w-12 h-12 p-2 duration-500' />
+               <MdDelete  className='group-hover:bg-black rounded-full w-12 h-12 p-2 duration-500'/>
+               </Flex>
+           </Flex>
+             <div >
+      <p className=' mx-4 my-3'>{item.text}</p>
+        <img src={item.img} alt={item.img} className='w-full  object-cover'/>
+       </div>       
+   </div>
+      </section>
   ))
 }
   </section>

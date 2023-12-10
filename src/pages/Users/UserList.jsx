@@ -22,16 +22,31 @@ function UserList() {
   return (
    <section className=' text-white '>
 
-     <div className=' fixed px-4'>
+     <div className=''>
      {
       data &&
-      <Flex className=" items-center">
-     <img src={data.photoURL} alt={data.photoURL} className='w-10 h-10 rounded-full' />
-     <p className=' text-xl '>{data.displayName}</p>
+      <Flex className="mt-6 gap-x-1">
+     <img src={data.photoURL} alt={data.photoURL} className='w-12 h-12 rounded-full' />
+     <p className=' text-xl mt-[2px] '>{data.displayName}</p>
      </Flex>
      }
      </div>
- 
+     <p className='mt-8 ml-4 text-[#a3a3a3]'>Suggested for you</p>
+     <div>
+      {
+        userList.map((item,index)=>(
+         <div key={index}>
+          <Flex className="mt-6 gap-x-1 text-center items-center ">
+     <img src={item.userImgUrl} alt={item.userImgUrl} className='w-12 h-12 rounded-full' />
+     <Flex className="items-center justify-between  ">
+     <p className=' text-xl mt-[2px] '>{item.userName}</p>
+     <button className='text-[#004b7b] hover:text-white duration-300 text-[18px] mt-1 '>follow</button>
+     </Flex>
+     </Flex>
+         </div>
+        ))
+      }
+     </div>
  
    </section>
   )

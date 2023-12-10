@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaGooglePlusG, FaFacebookF, FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import { toast } from 'react-toastify';
 import { Bars } from 'react-loader-spinner'
@@ -11,15 +11,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userLoginInfo } from '../Components/Slices/UserSlice';
 
 const LoginReg = () => {
-  const data =useSelector(state => state.userLoginInfo.userInfo)
+  const data = useSelector(state => state.userLoginInfo.userInfo)
 
   const provider = new GoogleAuthProvider();
   const db = getDatabase();
   const auth = getAuth();
- const navigate=useNavigate();
+  const navigate = useNavigate();
   const [loader, setLoader] = useState(false)
   const [condition, setCondition] = useState(false)
-const dispatch =useDispatch();
+  const dispatch = useDispatch();
   const [email1, setemail1] = useState('')
   const [fullname, setfullname] = useState('')
   const [password1, setpassword1] = useState('')
@@ -59,120 +59,119 @@ const dispatch =useDispatch();
       }
     }
     if (email1 && password1 && fullname && (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email1))) {
-      createUserWithEmailAndPassword(auth, email1, password1).then((user) => {        
-          toast.success("registration done please verify your email")
-          setemail1('')
-          setfullname('')
-          setpassword1('')
-          sendEmailVerification(auth.currentUser)
-          .then(()=>{
-         setActive(false)
-         updateProfile(auth.currentUser, {
-          displayName: fullname,
-           photoURL: "/src/assets/user.jpg"
-        })
-       })
-       .then(()=>{          
-          set(ref(db, 'users/' + user.user.uid), {
-            username: user.user.displayName,
-            email: user.user.email,
-         });
-        }).catch((error) => {
-          // An error occurred
-          // ...
-        });
-      })  .catch((error) => {
-         
-          if (error.code.includes("auth/email-already-in-use")) {
-            toast.error("email already used")
-          }
-        });
+      createUserWithEmailAndPassword(auth, email1, password1).then((user) => {
+        toast.success("registration done please verify your email")
+        setemail1('')
+        setfullname('')
+        setpassword1('')
+        sendEmailVerification(auth.currentUser)
+          .then(() => {
+            setActive(false)
+            updateProfile(auth.currentUser, {
+              displayName: fullname,
+              photoURL: "/src/assets/user.jpg"
+            })
+          })
+          .then(() => {
+            set(ref(db, 'users/' + user.user.uid), {
+              username: user.user.displayName,
+              email: user.user.email,
+            });
+          }).catch((error) => {
+            // An error occurred
+            // ...
+          });
+      }).catch((error) => {
+
+        if (error.code.includes("auth/email-already-in-use")) {
+          toast.error("email already used")
+        }
+      });
     }
   }
 
-  const handleGoogleSignUpPop = ()=>{
+  const handleGoogleSignUpPop = () => {
     signInWithPopup(auth, provider)
-    .then((user)=>{
-      
-      setTimeout(()=>{
-        dispatch(userLoginInfo(user))
-        localStorage.setItem('userLoginInfo',JSON.stringify((user)))
-        navigate('/')
-    
-      },3000)
-    }).catch((error)=>{
-      console.log(error.code);
-    })
+      .then((user) => {
+
+        setTimeout(() => {
+          dispatch(userLoginInfo(user))
+          localStorage.setItem('userLoginInfo', JSON.stringify((user)))
+          navigate('/')
+
+        }, 3000)
+      }).catch((error) => {
+        console.log(error.code);
+      })
   }
 
-  
+
   const [email2, setemail2] = useState('')
   const [password2, setpassword2] = useState('')
   const [emailErr2, setemailErr2] = useState('')
   const [passwordErr2, setpasswordErr2] = useState('')
 
-   const handleEmail2=(e)=>{
-  setemail2(e.target.value);
-  setemailErr2('')
-   }
-   const handlePassword2 = (e)=>{
-   setpassword2(e.target.value);
-   setpasswordErr2('')
-   }
-   
-   const handleLogIn =()=>{
+  const handleEmail2 = (e) => {
+    setemail2(e.target.value);
+    setemailErr2('')
+  }
+  const handlePassword2 = (e) => {
+    setpassword2(e.target.value);
+    setpasswordErr2('')
+  }
+
+  const handleLogIn = () => {
     if (!email2) {
       toast.error("Please Enter Your Email");
     } else {
       if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email2)) {
         toast.error("Enter Your Valid Email")
       }
-    }  if (!password2) {
+    } if (!password2) {
       toast.error("Please Enter Your Password");
     } else {
       if (!/^(?=.{8,})/.test(password2)) {
         toast.error("Please Enter 8 Character  Password");
       }
     }
-  
-     if(email2 && password2 &&  (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email2))){
-      signInWithEmailAndPassword(auth , email2 , password2).then((userCredential)=>{
+
+    if (email2 && password2 && (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email2))) {
+      signInWithEmailAndPassword(auth, email2, password2).then((userCredential) => {
         const user = userCredential.user;
-        if(user.emailVerified){
+        if (user.emailVerified) {
           navigate('/')
           toast.success("Login")
-         dispatch(userLoginInfo(user))
-        localStorage.setItem('userLoginInfo',JSON.stringify((user)))
-        }else{
+          dispatch(userLoginInfo(user))
+          localStorage.setItem('userLoginInfo', JSON.stringify((user)))
+        } else {
           toast.error("please verify email")
         }
-     
-             })
-     }
-   }
-  
 
-
-
-   const handleGoogleLoginPop = ()=>{
-    signInWithPopup(auth, provider)
-    .then((user)=>{
-      setTimeout(()=>{
-        dispatch(userLoginInfo(user))
-        localStorage.setItem('userLoginInfo',JSON.stringify((user)))
-        navigate('/')
-      },3000)
-    }).catch((error)=>{
-      console.log(error.code);
-    })
+      })
+    }
   }
 
-  useEffect(()=>{
-    if(data !=null){
-       navigate("/")
+
+
+
+  const handleGoogleLoginPop = () => {
+    signInWithPopup(auth, provider)
+      .then((user) => {
+        setTimeout(() => {
+          dispatch(userLoginInfo(user))
+          localStorage.setItem('userLoginInfo', JSON.stringify((user)))
+          navigate('/')
+        }, 3000)
+      }).catch((error) => {
+        console.log(error.code);
+      })
+  }
+
+  useEffect(() => {
+    if (data != null) {
+      navigate("/")
     }
- 
-   },[])
+  }, [])
 
 
   const [active, setActive] = useState(false)
@@ -193,9 +192,6 @@ const dispatch =useDispatch();
     setEye(true)
   }
 
-
-
-  
   return (
     <>
       {/* For Desktop */}
@@ -277,7 +273,7 @@ const dispatch =useDispatch();
               <div className='relative w-full'>
                 <input onChange={handlePassword2} value={password2} className='w-full bg-[#EEEEEE] py-1.5 px-5 my-2 rounded ' type={eye ? "text" : "password"} placeholder='Password' />
                 {eye ?
-                  <LuEyeOff onClick={handleEye2}  className='absolute top-[17px] right-[20px] cursor-pointer text-[#9A9898] text-base ' />
+                  <LuEyeOff onClick={handleEye2} className='absolute top-[17px] right-[20px] cursor-pointer text-[#9A9898] text-base ' />
                   :
                   <LuEye onClick={handleEye1} className='absolute top-[17px] right-[20px] cursor-pointer text-[#9A9898] text-base ' />
                 }
