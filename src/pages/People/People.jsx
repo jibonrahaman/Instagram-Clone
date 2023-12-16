@@ -24,7 +24,9 @@ function People() {
     <section className='w-[80%] h-screen overflow-y-scroll bg-[#242526]'>
        <div className='w-[40%] -600 mt-28'>
         <h2 className='text-white ml-48 my-2'>Suggested</h2>
-      
+      {
+        userList.map
+      }
        </div>
     </section>
   )
