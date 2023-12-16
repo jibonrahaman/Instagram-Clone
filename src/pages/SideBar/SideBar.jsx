@@ -61,41 +61,41 @@ function SideBar({className}) {
           <div className='flex flex-col gap-y-5 pt-12 text-xl   '>
     
      <Link to="/">
-     <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
+     <div className='flex gap-x-4 items-center hover:bg-[#4b4848]  px-4 py-3 rounded-lg '>
            <SlHome />
             <p>Home</p>
            </div>
      </Link>
        
  
-            <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
+            <div className='flex gap-x-4 items-center hover:bg-[#4b4848]  px-4 py-3 rounded-lg '>
             <TbVirusSearch />
             <p>Search</p>
            </div>
  
-            <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
+            <div className='flex gap-x-4 items-center hover:bg-[#4b4848]  px-4 py-3 rounded-lg '>
             <MdExplore />
             <p>Explore</p>
            </div>
  
-           <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
+           <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
            <BiSolidMessage />
             <p>Message</p>
            </div>
  
-            <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
+            <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
             <FcDoNotInhale className='text-[#ffa726]' />
             <p>Notificaiton</p>
            </div> 
  
-           <div className='flex gap-x-4 items-center hover:bg-[#1a1a1a]  px-4 py-3 rounded-lg '>
+           <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
          <VscGitPullRequestCreate  className='text-[#ffff00]'/>
             <p>Create</p>
            </div>
  
       
         <Link to='/profile'>
-        <div className='flex gap-x-4 items-center ml-4 '>
+        <div className='flex gap-x-4 items-center ml-4  hover:bg-[#4b4848]'>
                <p>Profile</p>
            </div> 
         </Link>
