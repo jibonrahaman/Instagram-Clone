@@ -15,6 +15,7 @@ import LoginReg from './../src/pages/LoginReg'
 import Verifyemail from './Components/Verifyemail';
 import TodoAbout from './pages/TodoAbout/TodoAbout';
 import People from './pages/People/People';
+import FollowRequest from './Components/FollowRequest/FollowRequest';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +31,9 @@ const router = createBrowserRouter([
       },{
         path: "/people",
         element: <People />,
+      },{
+        path: "/followRequest",
+        element: <FollowRequest />,
       },
     ],
   },

@@ -49,10 +49,10 @@ function SideBar({ className }) {
         <div className=' pl-7  w-full  h-screen pt-8  text-white '>
           <h2>InstAbout</h2>
           <div>
-            <div className='flex flex-col gap-y-5 pt-12 text-xl   '>
+            <div className='flex flex-col gap-y-4 pt-12 text-xl   '>
 
               <Link to="/">
-                <div className='flex gap-x-4 items-center hover:bg-[#4b4848]  px-4 py-3 rounded-lg '>
+                <div className='flex gap-x-4 items-center hover:bg-[#4b4848]  px-4 py-2  rounded-lg '>
                   <SlHome />
                   <p>Home</p>
                 </div>
@@ -64,18 +64,20 @@ function SideBar({ className }) {
               </div>
 
              <Link to="/people">
-             <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
+             <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-2 rounded-lg '>
                 <FaUsers className='text-[#ffff00]' />
                 <p>Users</p>
               </div>
              </Link>
 
-              <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
+              <Link to="/followRequest">
+              <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-2 rounded-lg '>
                 <IoSend className='text-[#ffff00]' />
                 <p>Follow Request</p>
               </div>
+              </Link>
 
-              <div className='flex gap-x-4 items-center hover:bg-[#4b4848]  px-4 py-3 rounded-lg '>
+              <div className='flex gap-x-4 items-center hover:bg-[#4b4848]  px-4 py-2 rounded-lg '>
                 <LiaUserFriendsSolid className='text-[#ffff00]' />
                 <p>Followers</p>
               </div>
