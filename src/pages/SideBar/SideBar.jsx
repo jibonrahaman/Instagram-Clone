@@ -16,7 +16,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { RotatingLines } from 'react-loader-spinner';
 import { FaRegHandPointDown } from 'react-icons/fa'
 import { IoSend } from "react-icons/io5";
-
+import { LiaUserFriendsSolid } from "react-icons/lia";
 function SideBar({className}) {
     const data =useSelector(state => state.userLoginInfo.userInfo)
    
@@ -77,11 +77,11 @@ function SideBar({className}) {
             
            <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
            <IoSend  className='text-[#ffff00]'/>
-            <p>Create</p>
+            <p>Follow Request</p>
            </div>
            
             <div className='flex gap-x-4 items-center hover:bg-[#4b4848]  px-4 py-3 rounded-lg '>
-            <MdExplore />
+            <LiaUserFriendsSolid />
             <p>Explore</p>
            </div>
  
