@@ -23,11 +23,11 @@ const [follow,setfollow]=useState(false)
 const handleFollowSend =(item)=>{
   console.log(item);
  set(push(ref(db ,"followRequest/")),{
+   sendid:data.uid,
   sendername:data.displayName,
-  sendid:data.uid,
   senderimg:data.photoURL,
-  receivername:item.userName,
   receiverid:item.userid,
+  receivername:item.userName,
   receiverimg:item.userImgUrl,
  })
 }
