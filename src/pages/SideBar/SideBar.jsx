@@ -15,6 +15,8 @@ import { userLoginInfo } from '../../Components/Slices/UserSlice';
 import { TypeAnimation } from 'react-type-animation';
 import { RotatingLines } from 'react-loader-spinner';
 import { FaRegHandPointDown } from 'react-icons/fa'
+import { IoSend } from "react-icons/io5";
+
 function SideBar({className}) {
     const data =useSelector(state => state.userLoginInfo.userInfo)
    
@@ -72,7 +74,12 @@ function SideBar({className}) {
             <TbVirusSearch />
             <p>Search</p>
            </div>
- 
+            
+           <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
+           <IoSend  className='text-[#ffff00]'/>
+            <p>Create</p>
+           </div>
+           
             <div className='flex gap-x-4 items-center hover:bg-[#4b4848]  px-4 py-3 rounded-lg '>
             <MdExplore />
             <p>Explore</p>
@@ -88,10 +95,7 @@ function SideBar({className}) {
             <p>Notificaiton</p>
            </div> 
  
-           <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
-         <VscGitPullRequestCreate  className='text-[#ffff00]'/>
-            <p>Create</p>
-           </div>
+           
  
       
         <Link to='/profile'>
