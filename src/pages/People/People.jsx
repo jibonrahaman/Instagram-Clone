@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Flex from '../../Components/Flex'
  import user from '../../assets/user.jpg'
 import { useSelector } from 'react-redux';
-import { getDatabase, onValue, ref } from 'firebase/database';
+import { getDatabase, onValue, push, ref, set } from 'firebase/database';
 function People() {
   const data =useSelector(state => state.userLoginInfo.userInfo)
   const db =getDatabase();
@@ -19,7 +19,18 @@ function People() {
       setuserList(arr)
     });
   }, [])
+const [follow,setfollow]=useState(false)
+const handleFollowSend =(item)=>{
+  console.log(item);
+ set(push(ref(db ,"followRequest/")),{
+  sendername:data.displayName,
+  sendid:data.uid,
+  senderphotoURL:data.photoURL,
+  receivername:item.userName,
+  receiverid:item.userid,
 
+ })
+}
   return (
     <section className='w-[80%] h-screen overflow-y-scroll bg-[#242526]'>
        <div className='w-[60%] -600 mt-28'>
@@ -32,7 +43,11 @@ function People() {
          <h2 className='mt-2 text-xl'>{item.userName}</h2>
         </Flex>
         <div>
-        <button className=' text-md px-4 py-1 mt-2 bg-[#0095f6] hover:bg-[#1877f2] text-white rounded-md '>Follow</button>
+   
+          {/* <button className=' text-md px-4 py-1 mt-2 bg-[#363636] hover:bg-[#4d4a4a] text-white rounded-md '>Follow</button> */}
+        
+          <button onClick={()=>handleFollowSend(item)} className='text-md px-4 py-1 mt-2 bg-[#0095f6] hover:bg-[#1877f2] text-white rounded-md'>Follow</button>
+       
         </div>
         </Flex>
         ))
