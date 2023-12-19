@@ -25,10 +25,10 @@ const handleFollowSend =(item)=>{
  set(push(ref(db ,"followRequest/")),{
   sendername:data.displayName,
   sendid:data.uid,
-  senderphotoURL:data.photoURL,
+  senderimg:data.photoURL,
   receivername:item.userName,
   receiverid:item.userid,
-
+  receiverimg:item.userImgUrl,
  })
 }
   return (
