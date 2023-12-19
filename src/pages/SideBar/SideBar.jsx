@@ -17,6 +17,7 @@ import { RotatingLines } from 'react-loader-spinner';
 import { FaRegHandPointDown } from 'react-icons/fa'
 import { IoSend } from "react-icons/io5";
 import { LiaUserFriendsSolid } from "react-icons/lia";
+import { FaUsers } from "react-icons/fa";
 function SideBar({className}) {
     const data =useSelector(state => state.userLoginInfo.userInfo)
    
@@ -62,6 +63,10 @@ function SideBar({className}) {
             <p>Search</p>
            </div>
             
+           <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
+           <FaUsers className='text-[#ffff00]' />
+            <p>Users</p>
+           </div>
            <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
            <IoSend  className='text-[#ffff00]'/>
             <p>Follow Request</p>
