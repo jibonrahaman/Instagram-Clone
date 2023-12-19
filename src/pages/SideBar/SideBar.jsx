@@ -43,20 +43,7 @@ function SideBar({className}) {
     });
   }
   return (
-    <section  >
-
-       
-              
-    
-         
-          <section className={`${className}`}>
-    
-  <section   >
-
-
-       
-
-
+    <section  >      
     <div className=' pl-7  w-full  h-screen pt-8  text-white '>
       <h2>InstAbout</h2>
       <div>
@@ -81,8 +68,8 @@ function SideBar({className}) {
            </div>
            
             <div className='flex gap-x-4 items-center hover:bg-[#4b4848]  px-4 py-3 rounded-lg '>
-            <LiaUserFriendsSolid />
-            <p>Explore</p>
+            <LiaUserFriendsSolid className='text-[#ffff00]' />
+            <p>Followers</p>
            </div>
  
            <div className='flex gap-x-4 items-center hover:bg-[#4b4848] px-4 py-3 rounded-lg '>
@@ -111,21 +98,6 @@ function SideBar({className}) {
           </div>
       </div>
    </div>   
-
-  
-    
-
-</section>
- </section>   
-                            
-    
-    
-    
-    
-    
-    
-    
-    
         </section>
   
   )
