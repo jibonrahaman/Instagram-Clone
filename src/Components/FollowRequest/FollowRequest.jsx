@@ -11,8 +11,11 @@ function FollowRequest() {
     const followShow = ref(db, 'followRequest/');
     const arr = [];
     onValue(followShow, (snapshot) => {
-        snapshot.forEach((item)=>{
-         arr.push(item.val())
+        snapshot.forEach((item)=>{   
+           if(data.uid === item.val().sendid || data.uid === item.val().receiverid){
+             arr.push({...item.val(),frID:item.key})
+
+           }
         })
         setFollowShow(arr)
       })
@@ -26,7 +29,12 @@ function FollowRequest() {
         return    <Flex className=" justify-between mt-5 ml-36" >
         <Flex className="text-white  gap-x-3">
         <img src={item.receiverimg} alt=""  className=' w-14 h-14 rounded-full'/>
-         <h2 className='mt-2 text-xl'>{item.receivername}</h2>
+         <h2 className='mt-2 text-xl'>
+          {
+            data.uid == item.sendid ? item.receivername : item.sendername
+
+          }
+         </h2>
         </Flex>
         <div>
           {/* <button className=' text-md px-4 py-1 mt-2 bg-[#363636] hover:bg-[#4d4a4a] text-white rounded-md '>Follow</button> */}
