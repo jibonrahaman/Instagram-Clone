@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Flex from '../Flex'
+import { useSelector } from 'react-redux';
+import { getDatabase, onValue, ref } from 'firebase/database';
 function FollowRequest() {
+  const db = getDatabase();
+  const data = useSelector(state => state.userLoginInfo.userInfo)
+
+  useEffect(()=>{
+    const followShow = ref(db, 'followRequest/');
+    onValue(followShow, (snapshot) => {
+        snapshot.forEach((item)=>{
+         
+        })
+     
+  })
+  }, [])
   return (
     <section className='w-[80%] h-screen overflow-y-scroll bg-[#242526]'>
     <div className='w-[60%] -600 mt-28'>
